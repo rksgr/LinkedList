@@ -58,10 +58,37 @@ public class MyNodeMain {
 
         // check if linked list created
         boolean result = myLinkedList.head.equals(myFirstNode) && 
-                         myLinkedList.tail.getNext().equals(mySecondNode) &&
+                         myLinkedList.head.getNext().equals(mySecondNode) &&
                          myLinkedList.tail.equals(myThirdNode) ;
         System.out.println("The linked list with nodes "+ key1+" , "+
                 key2+" and "+ key3+ " has been created: "+ result);
+    }
+    /*
+    Use Case 4: Insert 30 between 56 and 70
+                56 -> 30 -> 70
+    */
+    public static void insertLinkedListElement(Integer key1,Integer key2,Integer key3){
+        MyNode<Integer> myFirstNode = new MyNode<>(key1);
+        MyNode<Integer> mySecondNode = new MyNode<>(key2);
+        MyNode<Integer> myThirdNode = new MyNode<>(key3);
+        MyLinkedList myLinkedList = new MyLinkedList();
+        
+        myLinkedList.add(myFirstNode);
+        myLinkedList.append(myThirdNode);
+        System.out.print("Nodes before insert: ");
+        myLinkedList.printMyNodes();
+        
+        myLinkedList.insert(myFirstNode,mySecondNode);
+        System.out.print("Nodes after insert: ");
+        myLinkedList.printMyNodes();
+        
+
+        // check if linked list created
+        boolean result = myLinkedList.head.equals(myFirstNode) && 
+                         myLinkedList.head.getNext().equals(mySecondNode) &&
+                         myLinkedList.tail.equals(myThirdNode) ;
+        System.out.println(key2+" has been inserted in the linked list with nodes "+ key1+
+                " and "+ key3+ " : "+ result);
     }
     
     public static void main(String []args){
@@ -69,6 +96,6 @@ public class MyNodeMain {
         System.out.println("Today we shall perform basic operations"
                 + "related to linked list.");
         // Create a linked list by appending 30 and 70 to 56
-        createLinkedListAppend(56,30,70);
+        insertLinkedListElement(56,30,70);
     }
 }

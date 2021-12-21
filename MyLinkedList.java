@@ -30,10 +30,19 @@ public class MyLinkedList {
         if (this.tail == null){
             this.tail = newNode;
         }else {
-            INode tempNode = this.tail;
-            this.tail = newNode;
-            this.tail.setNext(tempNode);    // 56 points to 30 (Tail)  
+            this.tail.setNext(newNode);
+            this.tail = newNode;        // 56 points to 30 (Tail)  
         }
+    }
+    // New node inserted after previous node
+    public void insert(INode prevNode,INode newNode){
+       {
+        INode tempNode = prevNode.getNext(); // get pointer to next
+        prevNode.setNext(newNode);
+        newNode.setNext(tempNode); // newnode should point to element which was 
+                                    // pointed to by prevnode earlier.
+       }
+        
     }
     public void printMyNodes(){
         StringBuffer myNodes = new StringBuffer("My Nodes: ");
