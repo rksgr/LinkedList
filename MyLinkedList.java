@@ -48,7 +48,19 @@ public class MyLinkedList {
         INode tempNode = this.head;
         this.head  = head.getNext();//
         return tempNode;
-       }     
+       } 
+
+    // Pop the last element of the linked list 
+    public INode popLast(){
+        INode tempNode2 = this.head;
+        // get the element just before the last element
+        while (!tempNode2.getNext().equals(tail)){
+            tempNode2 = tempNode2.getNext();
+        }
+        this.tail = tempNode2;
+        tempNode2 = tempNode2.getNext();
+        return tempNode2;
+       } 
     public void printMyNodes(){
         StringBuffer myNodes = new StringBuffer("My Nodes: ");
         INode tempNode = head;

@@ -117,11 +117,37 @@ public class MyNodeMain {
                 + key1+", "+ key2 + " and "+ key3+ " : "+ result);
     }
     
+    /*
+    Use Case 6: Delete last element in linked list of sequence 56->30->70
+    */
+    public static void deleteLastElementLinkedList(Integer key1,Integer key2,Integer key3){
+        MyNode<Integer> myFirstNode = new MyNode<>(key1);
+        MyNode<Integer> mySecondNode = new MyNode<>(key2);
+        MyNode<Integer> myThirdNode = new MyNode<>(key3);
+        MyLinkedList myLinkedList = new MyLinkedList();
+        
+        myLinkedList.add(myFirstNode);
+        myLinkedList.append(mySecondNode);
+        myLinkedList.append(myThirdNode);
+        System.out.print("Initial Linked List: ");
+        myLinkedList.printMyNodes();
+        
+         System.out.println(myLinkedList.popLast());
+        System.out.println("Linked List after popping last element: ");
+        myLinkedList.printMyNodes();
+        
+        // check if last element of linked list popped
+        boolean result = myLinkedList.head.equals(myFirstNode) && 
+                         myLinkedList.tail.equals(mySecondNode) ;
+        System.out.println(key3+" has been popped out from the linked list with nodes "
+                + key1+", "+ key2 + " and "+ key3+ " : "+ result);
+    }
+    
     public static void main(String []args){
         System.out.println("Welcome to BridgeLabz!");
         System.out.println("Today we shall perform basic operations"
                 + "related to linked list.");
-        // Pop an element from a linked list
-        popElementLinkedList(56,30,70);
+        // Delete last element of the linked list
+        deleteLastElementLinkedList(56,30,70);
     }
 }
