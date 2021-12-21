@@ -142,12 +142,28 @@ public class MyNodeMain {
         System.out.println(key3+" has been popped out from the linked list with nodes "
                 + key1+", "+ key2 + " and "+ key3+ " : "+ result);
     }
+    /*
+    Use Case 7: Search element in linked list of sequence 56->30->70
+    */
+    public static void searchElementLinkedList(Integer search_key,Integer ...args){
+        MyLinkedList myLinkedList = new MyLinkedList();
+        for (Integer i:args){
+          MyNode<Integer> myNode = new MyNode<>(i); 
+          myLinkedList.add(myNode);
+        }
+        MyNode<Integer> mysearchNode = new MyNode<>(search_key);
+
+        System.out.print("Linked List: ");
+        myLinkedList.printMyNodes();
+        int node_pos = myLinkedList.search(mysearchNode);
+        System.out.println("The given element occurs at the following node: "+ node_pos);        
+    }
     
     public static void main(String []args){
         System.out.println("Welcome to BridgeLabz!");
         System.out.println("Today we shall perform basic operations"
                 + "related to linked list.");
-        // Delete last element of the linked list
-        deleteLastElementLinkedList(56,30,70);
+        // Search an element in the linked list
+        searchElementLinkedList(65,30,70,88,99,65,56,88);
     }
 }
