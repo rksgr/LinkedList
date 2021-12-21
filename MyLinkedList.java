@@ -62,23 +62,24 @@ public class MyLinkedList {
         return tempNode2;
        } 
     // Search for a given element in the linked list
-    public int search(INode srchNode){
+    public INode search(INode srchNode){
         INode tempNode = this.head;
         int count = 0 ;
         Boolean elem_found = false;
         while (tempNode.getNext()!=null && (elem_found.equals(false))){
             if (tempNode.getKey().equals(srchNode.getKey())){
                 elem_found = true;
+                break;
             }
             tempNode = tempNode.getNext();
             count++;
-            System.out.println("elem_found"+elem_found+"count"+count);
         }
         if (elem_found.equals(false)){
             count = -1;
         }
-        return count;
+        return tempNode;
     }
+    
     public void printMyNodes(){
         StringBuffer myNodes = new StringBuffer("My Nodes: ");
         INode tempNode = head;

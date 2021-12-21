@@ -145,7 +145,7 @@ public class MyNodeMain {
     /*
     Use Case 7: Search element in linked list of sequence 56->30->70
     */
-    public static void searchElementLinkedList(Integer search_key,Integer ...args){
+    public static INode<Integer> searchElementLinkedList(Integer search_key,Integer ...args){
         MyLinkedList myLinkedList = new MyLinkedList();
         for (Integer i:args){
           MyNode<Integer> myNode = new MyNode<>(i); 
@@ -155,15 +155,35 @@ public class MyNodeMain {
 
         System.out.print("Linked List: ");
         myLinkedList.printMyNodes();
-        int node_pos = myLinkedList.search(mysearchNode);
-        System.out.println("The given element occurs at the following node: "+ node_pos);        
+        return myLinkedList.search(mysearchNode);
     }
-    
+    /*
+    Use Case 8: Insert element in linked list after a particular element
+    */
+    public static void insertAfterSearchLinkedList(Integer to_be_inserted, 
+            Integer search_key,Integer ...args){
+        MyLinkedList myLinkedList = new MyLinkedList();
+        // create linked list
+        for (Integer i:args){
+          MyNode<Integer> myNode = new MyNode<>(i); 
+          myLinkedList.add(myNode);
+        }
+        MyNode<Integer> searchNode = new MyNode<>(search_key);
+        MyNode<Integer> insrtNode = new MyNode<>(to_be_inserted);
+        
+        INode<Integer> insertAfterNode = myLinkedList.search(searchNode);
+        System.out.print("Linked List before insertion: ");
+        myLinkedList.printMyNodes();
+        
+        myLinkedList.insert(insertAfterNode,insrtNode);
+        System.out.print("Linked List after insertion: ");
+        myLinkedList.printMyNodes();
+    }
     public static void main(String []args){
         System.out.println("Welcome to BridgeLabz!");
         System.out.println("Today we shall perform basic operations"
                 + "related to linked list.");
-        // Search an element in the linked list
-        searchElementLinkedList(65,30,70,88,99,65,56,88);
+        // Insert an element in the linked list
+        insertAfterSearchLinkedList(37,56,70,46,99,65,56,88);
     }
 }
