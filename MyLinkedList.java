@@ -41,9 +41,14 @@ public class MyLinkedList {
         prevNode.setNext(newNode);
         newNode.setNext(tempNode); // newnode should point to element which was 
                                     // pointed to by prevnode earlier.
-       }
-        
+       }     
     }
+    // Pop the first element of the linked list 
+    public INode pop(){
+        INode tempNode = this.head;
+        this.head  = head.getNext();//
+        return tempNode;
+       }     
     public void printMyNodes(){
         StringBuffer myNodes = new StringBuffer("My Nodes: ");
         INode tempNode = head;
