@@ -23,6 +23,18 @@ public class MyLinkedList {
             this.head.setNext(tempNode);    // 30 points to 70 (Tail)  
         }
     }
+    public void append(INode newNode){
+        if (this.head == null){
+            this.head = newNode;
+        } 
+        if (this.tail == null){
+            this.tail = newNode;
+        }else {
+            INode tempNode = this.tail;
+            this.tail = newNode;
+            this.tail.setNext(tempNode);    // 56 points to 30 (Tail)  
+        }
+    }
     public void printMyNodes(){
         StringBuffer myNodes = new StringBuffer("My Nodes: ");
         INode tempNode = head;
