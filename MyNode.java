@@ -2,7 +2,7 @@
 package com.mycompany.dec_20_linkedlist;
 
 
-public class MyNode <K> implements INode<K>{
+public class MyNode <K extends Comparable> implements INode<K>{
     private K key;
     private INode next;
     

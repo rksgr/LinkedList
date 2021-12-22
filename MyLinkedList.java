@@ -1,6 +1,7 @@
 
 package com.mycompany.dec_20_linkedlist;
 
+import java.lang.Comparable;
 
 public class MyLinkedList {
     public INode head;
@@ -100,7 +101,7 @@ public class MyLinkedList {
         INode tempNode = this.head;
         int count = 0 ;
         Boolean elem_found = false;
-        while (tempNode.getNext()!=null && (elem_found.equals(false))){
+        while (tempNode.getNext()!= null && (elem_found.equals(false))){
             if (tempNode.getKey().equals(srchNode.getKey())){
                 elem_found = true;
                 break;
@@ -113,7 +114,38 @@ public class MyLinkedList {
         }
         return tempNode;
     }
-    
+    // Add new element in such position that linked list is in ascending order
+    public  void addSorted(INode newNode){
+        if (this.head == null){
+            this.head = newNode;
+            this.tail = newNode;
+        } else  {
+            INode tempNode = this.head;
+            // If element smaller than head
+            if ((tempNode.getKey()).compareTo(newNode.getKey()) >0){
+                this.head = newNode;
+                newNode.setNext(tempNode);
+            }
+            // If element greater than tail
+            INode tempNodeT = this.tail;
+            if ((tempNodeT.getKey()).compareTo(newNode.getKey()) <0){
+                tempNodeT.setNext(newNode);
+                this.tail = newNode;
+            }
+           // In remaining cases 
+            while(tempNode.getNext() != null){
+                // temp<new and tempnext>new
+            if (((tempNode.getKey()).compareTo(newNode.getKey()) <0)&&
+                 (tempNode.getNext().getKey().compareTo(newNode.getKey()) >0)){
+                INode tempNode1 = tempNode.getNext();
+                tempNode.setNext(newNode);
+                newNode.setNext(tempNode1); 
+            }
+            tempNode = tempNode.getNext();
+            }
+        }
+    }
+    // Print the nodes
     public void printMyNodes(){
         StringBuffer myNodes = new StringBuffer("My Nodes: ");
         INode tempNode = head;

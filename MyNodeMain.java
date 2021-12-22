@@ -197,11 +197,24 @@ public class MyNodeMain {
         // Print size of linked list
         System.out.println("Size of linked list = "+ myLinkedList.findSize());
     }
+    /*
+    Use case 10: Create ordered linked list in ascending order of data
+    */
+    public static void sortLinkedList(Integer ...args){
+        MyLinkedList myLinkedList = new MyLinkedList();
+        // create linked list
+        for (Integer i:args){
+          MyNode<Integer> myNode = new MyNode<>(i); 
+          myLinkedList.addSorted(myNode);
+        }        
+        System.out.print("Ordered Linked list in ascending order of data: ");
+        myLinkedList.printMyNodes();
+    }
     public static void main(String []args){
         System.out.println("Welcome to BridgeLabz!");
         System.out.println("Today we shall perform basic operations"
                 + "related to linked list.");
-        // Delete an element in the linked list
-        deleteElementLinkedList(40,56,30,40,70);
+        // Create ordered linked list in ascending order
+        sortLinkedList(56,30,40,70);
     }
 }
