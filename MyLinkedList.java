@@ -52,15 +52,49 @@ public class MyLinkedList {
 
     // Pop the last element of the linked list 
     public INode popLast(){
-        INode tempNode2 = this.head;
+        INode tempNode = this.head;
         // get the element just before the last element
-        while (!tempNode2.getNext().equals(tail)){
-            tempNode2 = tempNode2.getNext();
+        while (!tempNode.getNext().equals(tail)){
+            tempNode = tempNode.getNext();
         }
-        this.tail = tempNode2;
-        tempNode2 = tempNode2.getNext();
-        return tempNode2;
+        this.tail = tempNode;
+        tempNode = tempNode.getNext();
+        return tempNode;
        } 
+    // Delete the given element of the linked list 
+    public void delete(INode deleteNode){
+        INode tempNode = this.head;
+        // If the element to be deleted is either the first or the last element
+        if ( deleteNode.equals(this.head)) pop();
+        if ( deleteNode.equals(this.tail)) popLast();
+        // search for the element to be deleted
+        while (!(tempNode.getNext().equals(tail))){ 
+            if (tempNode.getNext().getKey().equals(deleteNode.getKey())){
+                INode tempNode1 = tempNode.getNext().getNext();
+                tempNode.setNext(tempNode1);
+                break;
+            }
+                tempNode = tempNode.getNext();
+            }
+       }
+    //size of the linked list
+    public int findSize(){
+        int size_lnk_lst;
+        INode tempNode = this.head;
+        INode tempNode1 = this.tail;
+        if (tempNode.equals(tempNode1)){   // If 1 element
+            size_lnk_lst = 1;
+        } else if (tempNode.getNext().equals(tempNode1)){   // If 2 elements
+            size_lnk_lst = 2;    
+        } else{ // If minimum 2 elements
+            size_lnk_lst = 2;
+            while (!tempNode.getNext().equals(tempNode1)){
+                size_lnk_lst++;
+                tempNode = tempNode.getNext();
+            }
+        }
+        return size_lnk_lst;
+    }
     // Search for a given element in the linked list
     public INode search(INode srchNode){
         INode tempNode = this.head;

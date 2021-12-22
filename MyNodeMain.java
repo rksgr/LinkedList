@@ -179,11 +179,29 @@ public class MyNodeMain {
         System.out.print("Linked List after insertion: ");
         myLinkedList.printMyNodes();
     }
+    /*
+    Use case 9: Delete element from linked list, find size of linked list
+    */
+    public static void deleteElementLinkedList(Integer del_key,Integer ...args){
+        MyLinkedList myLinkedList = new MyLinkedList();
+        // create linked list
+        for (Integer i:args){
+          MyNode<Integer> myNode = new MyNode<>(i); 
+          myLinkedList.add(myNode);
+        }
+        // Node to be deleted
+        MyNode<Integer> delNode = new MyNode<>(del_key);
+        myLinkedList.delete(delNode);
+        System.out.print("Linked List after deletion: ");
+        myLinkedList.printMyNodes();
+        // Print size of linked list
+        System.out.println("Size of linked list = "+ myLinkedList.findSize());
+    }
     public static void main(String []args){
         System.out.println("Welcome to BridgeLabz!");
         System.out.println("Today we shall perform basic operations"
                 + "related to linked list.");
-        // Insert an element in the linked list
-        insertAfterSearchLinkedList(37,56,70,46,99,65,56,88);
+        // Delete an element in the linked list
+        deleteElementLinkedList(40,56,30,40,70);
     }
 }
